@@ -58,8 +58,6 @@ while (gg == False):
         print('Проигрыш (')
         break
 
-
-
     print('Слово: ', bottomletstr)
     print('Ошибки: ', countfails)
     try:
@@ -88,14 +86,3 @@ while (gg == False):
         f7.close()
         f8.close()
         break
-
-
-
-
-
-
-
-
-
-
-
