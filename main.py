@@ -11,11 +11,14 @@ f5 = open('steps/5p.txt', encoding='utf-8')
 f6 = open('steps/6p.txt', encoding='utf-8')
 f7 = open('steps/7p.txt', encoding='utf-8')
 f8 = open('steps/lastgg.txt', encoding='utf-8')
+wordsfile = open('wordlist.txt', "r", encoding='utf-8')
+wordlist = wordsfile.read()
+word_into_list = wordlist.split("\n")
 
-words = ['человек', 'яблоко', 'русский', 'компьютер', 'вселенная', 'мозг', 'siderea', 'улица', 'перемотка']
-countwordslist = len(words)
+#words = ['человек', 'яблоко', 'русский', 'компьютер', 'вселенная', 'мозг', 'siderea', 'улица', 'перемотка']
+countwordslist = len(word_into_list)
 #print(countwordslist)
-randomword = words[random.randint(0, countwordslist - 1)] #выбираем слово
+randomword = word_into_list[random.randint(0, countwordslist - 1)] #выбираем слово
 countletter = len(randomword) #считаем буквы
 bottomlet = []
 gg = False
