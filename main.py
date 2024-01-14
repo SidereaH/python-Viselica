@@ -12,7 +12,7 @@ f6 = open('steps/6p.txt', encoding='utf-8')
 f7 = open('steps/7p.txt', encoding='utf-8')
 f8 = open('steps/lastgg.txt', encoding='utf-8')
 
-words = ['человек', 'яблоко', 'русский', 'компьютер', 'вселенная']
+words = ['человек', 'яблоко', 'русский', 'компьютер', 'вселенная', 'мозг', 'siderea', 'улица', 'перемотка']
 countwordslist = len(words)
 #print(countwordslist)
 randomword = words[random.randint(0, countwordslist - 1)] #выбираем слово
