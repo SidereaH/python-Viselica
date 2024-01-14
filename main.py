@@ -1,4 +1,6 @@
 import random
+import os
+clear = lambda: os.system('cls')
 print('Добро пожаловать на арену смерти 😈')
 
 f1 = open('steps/1p.txt', encoding='utf-8')
@@ -28,26 +30,33 @@ bottomletstr= bottomletstr.replace(' ', '') #удаление пробелов
 while (gg == False):
     if(countfails == 0):
         file = f1.read()
+        print(file)
     elif (countfails == 1):
         file = f2.read()
+        print(file)
     elif (countfails == 2):
         file = f3.read()
+        print(file)
     elif (countfails == 3):
         file = f4.read()
+        print(file)
     elif (countfails == 4):
         file = f5.read()
+        print(file)
     elif (countfails == 5):
         file = f6.read()
+        print(file)
     elif (countfails == 6):
         file = f7.read()
+        print(file)
     else:
         file = f8.read()
+        print(file)
         print('Проигрыш (')
         break
 
-    print("\033c", end="")
 
-    print(file)
+
     print('Слово: ', bottomletstr)
     print('Ошибки: ', countfails)
     try:
@@ -64,8 +73,17 @@ while (gg == False):
         bottomletstr = bottomletstr.replace(' ', '')  # удаление пробелов
     else:
         countfails = countfails + 1
+    clear()
     if bottomlet.count('_') == False:
         print('Ура!!! Вы победили!!!')
+        f1.close()
+        f2.close()
+        f3.close()
+        f4.close()
+        f5.close()
+        f6.close()
+        f7.close()
+        f8.close()
         break
 
 
