@@ -22,8 +22,9 @@ def workwthFile(file):
     f1.close()
     
 
-def loose():
+def loose(randwin):
     print('Вы проиграли')
+    print('Слово: ', randwin)
     
     
 def wordAndErrors(bottomletstr, countfails):
@@ -33,6 +34,8 @@ def wordAndErrors(bottomletstr, countfails):
 def inputletter():
     try:
         letterr = input('Введите букву:' )
+        if letterr.isupper():
+            letterr.lower()
     except TypeError:
         print('Ошибка! Введите букву!')
     
@@ -43,5 +46,10 @@ def searchFor(bottomlet, letter, indexfound, randomword, bottomletstr):
     randomword = randomword.replace(letter, ' ', 1)
     bottomletstr = '  '.join(bottomlet)  # преобразование списка в строку
     bottomletstr = bottomletstr.replace(' ', '')  # удаление пробелов
-def winGame():
+def winGame(randwin):
+    randwin.upper()
     print('Ура!!! Вы победили!!!')
+    print("Слово:", randwin)
+def counterr(countfails):
+    countfails = countfails + 1
+    return countfails

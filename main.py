@@ -5,6 +5,7 @@ module.clear()
 
 
 randomword = module.wordslib('wordlist.txt')
+randwin = randomword
 countletter = countletter = len(randomword)
 bottomlet = []
 gg = False
@@ -33,7 +34,7 @@ while (gg == False):
         module.workwthFile('steps/7p.txt')
     else:
         module.workwthFile('steps/lastgg.txt')
-        module.loose()
+        module.loose(randwin)
         #print('Проигрыш (')
         break
     module.wordAndErrors(bottomletstr, countfails)
@@ -41,7 +42,9 @@ while (gg == False):
     letter = module.inputletter()
     
     indexfound = randomword.find(letter)
-
+    if letter == randwin:
+        module.winGame(randwin)
+        break
     if(indexfound != -1):
         #module.searchFor(bottomlet, letter, indexfound, randomword, bottomletstr)
         bottomlet.remove('_')
@@ -50,8 +53,9 @@ while (gg == False):
         bottomletstr = '  '.join(bottomlet)  # преобразование списка в строку
         bottomletstr = bottomletstr.replace(' ', '')  # удаление пробелов
     else:
-        countfails = countfails + 1
+        countfails = module.counterr(countfails)
     module.clear()
     if bottomlet.count('_') == False:
-        module.winGame()
+
+        module.winGame(randwin)
         break
