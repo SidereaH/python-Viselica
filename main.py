@@ -1,25 +1,11 @@
 import random
-import os
-clear = lambda: os.system('cls')
-print('Добро пожаловать на арену смерти 😈')
+import module
+module.clear()
+#print('Добро пожаловать на арену смерти 😈')
 
-f1 = open('steps/1p.txt', encoding='utf-8')
-f2 = open('steps/2p.txt', encoding='utf-8')
-f3 = open('steps/3p.txt', encoding='utf-8')
-f4 = open('steps/4p.txt', encoding='utf-8')
-f5 = open('steps/5p.txt', encoding='utf-8')
-f6 = open('steps/6p.txt', encoding='utf-8')
-f7 = open('steps/7p.txt', encoding='utf-8')
-f8 = open('steps/lastgg.txt', encoding='utf-8')
-wordsfile = open('wordlist.txt', "r", encoding='utf-8')
-wordlist = wordsfile.read()
-word_into_list = wordlist.split("\n")
 
-#words = ['человек', 'яблоко', 'русский', 'компьютер', 'вселенная', 'мозг', 'siderea', 'улица', 'перемотка']
-countwordslist = len(word_into_list)
-#print(countwordslist)
-randomword = word_into_list[random.randint(0, countwordslist - 1)] #выбираем слово
-countletter = len(randomword) #считаем буквы
+randomword = module.wordslib('wordlist.txt')
+countletter = countletter = len(randomword)
 bottomlet = []
 gg = False
 countfails = 0
@@ -32,41 +18,32 @@ bottomletstr= bottomletstr.replace(' ', '') #удаление пробелов
 
 while (gg == False):
     if(countfails == 0):
-        file = f1.read()
-        print(file)
+        module.workwthFile('steps/1p.txt')
     elif (countfails == 1):
-        file = f2.read()
-        print(file)
+        module.workwthFile('steps/2p.txt')
     elif (countfails == 2):
-        file = f3.read()
-        print(file)
+        module.workwthFile('steps/3p.txt')
     elif (countfails == 3):
-        file = f4.read()
-        print(file)
+        module.workwthFile('steps/4p.txt')
     elif (countfails == 4):
-        file = f5.read()
-        print(file)
+        module.workwthFile('steps/5p.txt')
     elif (countfails == 5):
-        file = f6.read()
-        print(file)
+        module.workwthFile('steps/6p.txt')
     elif (countfails == 6):
-        file = f7.read()
-        print(file)
+        module.workwthFile('steps/7p.txt')
     else:
-        file = f8.read()
-        print(file)
-        print('Проигрыш (')
+        module.workwthFile('steps/lastgg.txt')
+        module.loose()
+        #print('Проигрыш (')
         break
-
-    print('Слово: ', bottomletstr)
-    print('Ошибки: ', countfails)
-    try:
-        letter = input('Введите букву:' )
-    except TypeError:
-        print('Ошибка! Введите букву!')
+    module.wordAndErrors(bottomletstr, countfails)
+    
+    letter = module.inputletter()
+    
     indexfound = randomword.find(letter)
 
     if(indexfound != -1):
+        #module.searchFor(bottomlet, letter, indexfound, randomword, bottomletstr)
         bottomlet.remove('_')
         bottomlet.insert(indexfound, letter)
         randomword = randomword.replace(letter, ' ', 1)
@@ -74,15 +51,7 @@ while (gg == False):
         bottomletstr = bottomletstr.replace(' ', '')  # удаление пробелов
     else:
         countfails = countfails + 1
-    clear()
+    module.clear()
     if bottomlet.count('_') == False:
-        print('Ура!!! Вы победили!!!')
-        f1.close()
-        f2.close()
-        f3.close()
-        f4.close()
-        f5.close()
-        f6.close()
-        f7.close()
-        f8.close()
+        module.winGame()
         break
