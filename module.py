@@ -25,9 +25,22 @@ def workwthFile(file):
 def loose(randwin):
     print('Вы проиграли')
     print('Слово: ', randwin)
+
+
+def questcont():
+    a = input('Еще раз? y/n')
+    a.lower()
+    if a == 'y':
+        again = True
+    else:
+        again = False
+    return again
+
+
     
     
-def wordAndErrors(bottomletstr, countfails):
+def wordAndErrors(bottomletstr, countfails, descr):
+    print('Описание: ', descr)
     print('Слово: ', bottomletstr)
     print('Ошибки: ', countfails)
     
@@ -53,3 +66,24 @@ def winGame(randwin):
 def counterr(countfails):
     countfails = countfails + 1
     return countfails
+def worddict(): #создание словаря из файла
+    with open('dictwordlist.txt') as file:  # Читаем файл
+        lines = file.read().splitlines()  # read().splitlines() - чтобы небыло пустых строк
+
+    dic = {}  # Создаем пустой словарь
+
+    for line in lines:  # Проходимся по каждой строчке
+        key, value = line.split(': ')  # Разделяем каждую строку по двоеточии(в key будет - пицца, в value - 01)
+        dic.update({key: value})  # Добавляем в словарь
+
+    return dic  # возвращение слооваря
+def randomdictkey(worddictl):
+    wordfrdict, descript = random.choice(list(worddictl.items()))
+    return wordfrdict, descript
+def emptyDictionary(dictionary):
+    if bool(dictionary) == False:
+        print("Поздравляю, у нас закончились слова")
+        fullgg = True
+    else:
+        fullgg = False
+    return fullgg
